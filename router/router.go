@@ -35,6 +35,7 @@ func NewRouter(uc controller.IUserController, tc controller.ITaskController) *ec
 		return c.String(http.StatusOK, "OK")
 	})
 
+	e.GET("/csrf", uc.CsrfToken)
 	e.POST("/signup", uc.SignUp)
 	e.POST("/login", uc.LogIn)
 	e.POST("/logout", uc.LogOut)
