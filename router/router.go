@@ -24,6 +24,11 @@ func NewRouter(uc controller.IUserController, tc controller.ITaskController) *ec
 		CookieHTTPOnly: true,
 		CookieSameSite: http.SameSiteDefaultMode,
 	}))
+
+	e.GET("/health", func(c echo.Context) error {
+		return c.String(http.StatusOK, "OK")
+	})
+
 	e.POST("/signup", uc.SignUp)
 	e.POST("/login", uc.LogIn)
 	e.POST("/logout", uc.LogOut)
@@ -38,5 +43,6 @@ func NewRouter(uc controller.IUserController, tc controller.ITaskController) *ec
 	t.POST("", tc.CreateTask)
 	t.PUT("/:taskId", tc.UpdateTask)
 	t.DELETE("/:taskId", tc.DeleteTask)
+
 	return e
 }
