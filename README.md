@@ -1,10 +1,19 @@
-# learn-go-lang
+# create module
 
-setup db
+go mod init learn-go
+
+# start db
+
 docker compose up -d
 
-Migration
-GO_ENV=dev go run migrate/migrate.go
+# remove db
 
-setup local server
-GO_ENV=dev go run main.go
+docker compose rm -s -f -v
+
+# start app
+
+GO_ENV=dev go run .
+
+# run migrate
+
+GO_ENV=dev go run migrate/migrate.go
