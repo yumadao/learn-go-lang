@@ -4,6 +4,5 @@
     "editor.tabSize": 4
   },
   "indentRainbow.excludedLanguages": ["plaintext", "go"],
-  "editor.formatOnSave": true,
   "cSpell.userWords": ["usecase"]
 }
